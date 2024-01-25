@@ -10,17 +10,34 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-variable "length" {
-  type    = number
-  default = 24
+variable "link_name" {
+  description = "Name of the Network link"
+  type        = string
 }
 
-variable "number" {
-  type    = bool
-  default = true
+variable "private_dns_zone_name" {
+  description = "Name of the Private DNS Zone"
+  type        = string
 }
 
-variable "special" {
-  type    = bool
-  default = false
+variable "resource_group_name" {
+  description = "Specifies the resource group where the Private DNS Zone exists. Changing this forces a new resource to be created."
+  type        = string
+}
+
+variable "virtual_network_id" {
+  description = "The ID of the Virtual Network that should be linked to the DNS Zone. Changing this forces a new resource to be created."
+  type        = string
+}
+
+variable "registration_enabled" {
+  description = "(Optional) Is auto-registration of virtual machine records in the virtual network in the Private DNS zone enabled? Defaults to false."
+  type        = bool
+  default     = false
+}
+
+variable "tags" {
+  description = "Tags to be associated with this resource"
+  type        = map(string)
+  default     = {}
 }

@@ -15,21 +15,17 @@ func TestVnetLink(t *testing.T, ctx types.TestContext) {
 		assert.NotEqual(t, "foo", "bar", "Should never be the same!")
 	})
 
-	// When cloning the skeleton to a new module, you will need to change the below test
-	// to meet your needs and add any new tests that apply to your situation.
 	t.Run("TestVnetLink", func(t *testing.T) {
-		output := terraform.Output(t, ctx.TerratestTerraformOptions, "string")
+		linkId := terraform.Output(t, ctx.TerratestTerraformOptions, "vnet_link_id")
+		dnsZoneId := terraform.Output(t, ctx.TerratestTerraformOptions, "dns_zone_id")
+		resourceGroupId := terraform.Output(t, ctx.TerratestTerraformOptions, "resource_group_id")
+		vnetId := terraform.Output(t, ctx.TerratestTerraformOptions, "vnet_id")
+		dnsZoneName := terraform.Output(t, ctx.TerratestTerraformOptions, "dns_zone_name")
 
-		// Output contains only alphanumeric characters and 🍰
-		assert.Regexp(t, regexp.MustCompile("^[A-Za-z🍰0-9]+$"), output)
-
-		// Other tests would go here and can use functions from lcaf-component-terratest-common.
-		// Examples (from lambda):
-		// functionName := terraform.Output(t, ctx.TerratestTerraformOptions, "function_name")
-		// require.NotEmpty(t, functionName, "name of deployed lambda should be set")
-		// awsApiLambdaClient := test_helper_lambda.GetAWSApiLambdaClient(t)
-		// test_helper_lambda.WaitForLambdaSpinUp(t, awsApiLambdaClient, functionName)
-		// test_helper_lambda.TestIsLambdaInvokable(t, awsApiLambdaClient, functionName)
-		// test_helper_lambda.TestLambdaTags(t, awsApiLambdaClient, functionName, ctx.TestConfig.(*ThisTFModuleConfig).Tags)
+		assert.NotEmpty(t, linkId, "ID must not be empty")
+		assert.NotEmpty(t, dnsZoneId, "DNS Zone ID must not be empty")
+		assert.NotEmpty(t, resourceGroupId, "Resource Group ID must not be empty")
+		assert.NotEmpty(t, vnetId, "Vnet ID must not be empty")
+		assert.Regexp(t, regexp.MustCompile(`^[A-Za-z🍰0-9-\.\-]+$`), dnsZoneName)
 	})
 }
