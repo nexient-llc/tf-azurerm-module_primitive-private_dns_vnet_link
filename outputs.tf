@@ -10,6 +10,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-output "string" {
-  value = random_string.string.result
+output "id" {
+  description = "The ID of the Private DNS Zone Virtual Network Link."
+  value       = azurerm_private_dns_zone_virtual_network_link.vnet_link.id
 }

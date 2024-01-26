@@ -25,7 +25,7 @@ const (
 	infraTFVarFileNameDefault        = "test.tfvars"
 )
 
-func TestSkeletonModule(t *testing.T) {
+func TestVnetLinkModule(t *testing.T) {
 
 	ctx := types.TestContext{
 		TestConfig: &testimpl.ThisTFModuleConfig{},

@@ -10,4 +10,22 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+output "vnet_id" {
+  value = module.vnet.vnet_id
+}
 
+output "resource_group_id" {
+  value = module.resource_group.id
+}
+
+output "dns_zone_id" {
+  value = module.private_dns_zone.id
+}
+
+output "dns_zone_name" {
+  value = module.private_dns_zone.zone_name
+}
+
+output "vnet_link_id" {
+  value = module.vnet_link.id
+}
