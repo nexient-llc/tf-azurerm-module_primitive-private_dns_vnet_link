@@ -26,6 +26,6 @@ func TestVnetLink(t *testing.T, ctx types.TestContext) {
 		assert.NotEmpty(t, dnsZoneId, "DNS Zone ID must not be empty")
 		assert.NotEmpty(t, resourceGroupId, "Resource Group ID must not be empty")
 		assert.NotEmpty(t, vnetId, "Vnet ID must not be empty")
-		assert.Regexp(t, regexp.MustCompile(`^[A-Za-z🍰0-9-\.\-]+$`), dnsZoneName)
+		assert.Regexp(t, regexp.MustCompile(`^[A-Za-z0-9\.\-]+$`), dnsZoneName)
 	})
 }
